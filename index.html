@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7f5">
+  <title>PIN Check — Private PIN strength checker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="PIN Check home">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span>PIN Check</span>
+      </a>
+      <span class="privacy-badge"><span aria-hidden="true"></span> Private by design</span>
+    </header>
+
+    <section class="checker" aria-labelledby="page-title">
+      <div class="intro">
+        <p class="eyebrow">A quick security check</p>
+        <h1 id="page-title">How strong is<br>your PIN?</h1>
+        <p class="intro-copy">Check a PIN you already use. Get practical tips to make it harder to guess.</p>
+      </div>
+
+      <form id="pin-form" class="pin-card" autocomplete="off" novalidate>
+        <label for="pin-input">Enter your PIN</label>
+        <div class="input-row">
+          <input
+            id="pin-input"
+            name="pin"
+            type="password"
+            inputmode="numeric"
+            autocomplete="off"
+            autocapitalize="off"
+            spellcheck="false"
+            maxlength="12"
+            aria-describedby="pin-hint pin-error"
+            placeholder="4–12 digits"
+          >
+          <button class="visibility-button" id="visibility-button" type="button" aria-label="Show PIN" aria-pressed="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M2.8 12s3.2-6 9.2-6 9.2 6 9.2 6-3.2 6-9.2 6-9.2-6-9.2-6Z"></path>
+              <circle cx="12" cy="12" r="2.5"></circle>
+            </svg>
+          </button>
+        </div>
+        <p class="field-hint" id="pin-hint">Digits only. Your PIN is checked on this device and is never saved.</p>
+        <p class="field-error" id="pin-error" role="alert" aria-live="polite"></p>
+        <button class="check-button" type="submit">Check PIN strength <span aria-hidden="true">→</span></button>
+
+        <section id="result" class="result" aria-live="polite" aria-atomic="true" hidden>
+          <div class="result-heading">
+            <div>
+              <p class="result-label">Strength estimate</p>
+              <p class="strength-name" id="strength-name"></p>
+            </div>
+            <div class="score" aria-label="Score out of 100">
+              <span id="score-value">0</span><span class="score-total">/100</span>
+            </div>
+          </div>
+          <div class="meter" role="progressbar" aria-label="PIN strength estimate" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="strength-meter">
+            <span id="meter-fill"></span>
+          </div>
+          <p class="result-summary" id="result-summary"></p>
+          <ul class="tips-list" id="tips-list"></ul>
+        </section>
+      </form>
+
+      <aside class="privacy-note">
+        <span class="privacy-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="5" y="10" width="14" height="11" rx="2"></rect>
+            <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+            <circle cx="12" cy="15" r="1"></circle>
+          </svg>
+        </span>
+        <div>
+          <h2>Your PIN stays yours</h2>
+          <p>All checks happen locally in this page. We don't send or store what you type. Avoid entering a PIN on a shared or untrusted device.</p>
+        </div>
+      </aside>
+
+      <p class="disclaimer">This is a simple pattern-based estimate, not a guarantee of security. Follow your device or service's PIN requirements.</p>
+    </section>
+
+    <footer class="site-footer">
+      <span>Simple checks. Safer habits.</span>
+      <span>Runs entirely in your browser</span>
+    </footer>
+  </main>
+</body>
+</html>
